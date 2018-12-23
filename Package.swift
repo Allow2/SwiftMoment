@@ -3,8 +3,11 @@ import PackageDescription
 
 let package = Package(
 	name: "SwiftMoment",
+	products: [
+	    .library(name: "SwiftMoment", dependencies: ["SwiftMoment"])
+	],
 	dependencies: [],
 	targets: [
-	    .target(name: "SwiftMoment", dependencies: []),
+	    .target(name: "SwiftMoment", dependencies: [], path: "Sources/SwiftMoment")
 	]
 )
