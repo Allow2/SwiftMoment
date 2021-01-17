@@ -16,9 +16,9 @@ extension Moment {
     /// - returns: A localized string.
     public func toNow() -> String {
         let timeDiffDuration = self.intervalSince(moment())
-        let deltaSeconds = timeDiffDuration.seconds
+        let deltaSeconds = Int(timeDiffDuration.seconds)
         
-        var value: Double!
+        var value: Int!
         
         if deltaSeconds < 5 {
             // Just Now
@@ -27,7 +27,7 @@ extension Moment {
         }
         else if deltaSeconds < minuteInSeconds {
             // Seconds Ago
-            return stringFromFormat("%%1.0f %@seconds", withValue: deltaSeconds)
+            return stringFromFormat("%%d %@seconds", withValue: deltaSeconds)
             
         }
         else if deltaSeconds < (minuteInSeconds * 2) {
@@ -37,7 +37,7 @@ extension Moment {
         }
         else if deltaSeconds < hourInSeconds {
             // Minutes Ago
-            return stringFromFormat("%%1.0f %@minutes", withValue: deltaSeconds / minuteInSeconds)
+            return stringFromFormat("%%d %@minutes", withValue: deltaSeconds / minuteInSeconds)
             
         }
         else if deltaSeconds < (hourInSeconds * 2) {
@@ -47,8 +47,8 @@ extension Moment {
         }
         else if deltaSeconds < dayInSeconds {
             // Hours Ago
-            value = floor(deltaSeconds / hourInSeconds)
-            return stringFromFormat("%%1.0f %@hours", withValue: value)
+            value = inbt(floor(deltaSeconds / hourInSeconds))
+            return stringFromFormat("%%d %@hours", withValue: value)
             
         }
         else if deltaSeconds < (dayInSeconds * 2) {
@@ -58,8 +58,8 @@ extension Moment {
         }
         else if deltaSeconds < weekInSeconds {
             // Days Ago
-            value = floor(deltaSeconds / dayInSeconds)
-            return stringFromFormat("%%1.0f %@days", withValue: value)
+            value = Int(floor(deltaSeconds / dayInSeconds))
+            return stringFromFormat("%%d %@days", withValue: value)
             
         }
         else if deltaSeconds < (weekInSeconds * 2) {
@@ -69,8 +69,8 @@ extension Moment {
         }
         else if deltaSeconds < monthInSeconds {
             // Weeks Ago
-            value = floor(deltaSeconds / weekInSeconds)
-            return self.stringFromFormat("%%1.0f %@weeks", withValue: value)
+            value = Int(floor(deltaSeconds / weekInSeconds)0
+            return self.stringFromFormat("%%d %@weeks", withValue: value)
             
         }
         else if deltaSeconds < (dayInSeconds * 61) {
@@ -80,8 +80,8 @@ extension Moment {
         }
         else if deltaSeconds < yearInSeconds {
             // Month Ago
-            value = floor(deltaSeconds / monthInSeconds)
-            return stringFromFormat("%%1.0f %@months", withValue: value)
+            value = Int(floor(deltaSeconds / monthInSeconds))
+            return stringFromFormat("%%d %@months", withValue: value)
             
         }
         else if deltaSeconds < (yearInSeconds * 2) {
@@ -90,7 +90,7 @@ extension Moment {
         }
         
         // Years Ago
-        value = floor(deltaSeconds / yearInSeconds)
-        return stringFromFormat("%%1.0f %@years", withValue: value)
+        value = Int(floor(deltaSeconds / yearInSeconds))
+        return stringFromFormat("%%d", withValue: value)
     }
 }
