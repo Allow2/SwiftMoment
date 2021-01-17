@@ -80,7 +80,7 @@ extension Moment {
       return stringFromFormat("%%d %@years ago", withValue: value)
     }
 
-    fileprivate func stringFromFormat(_ format: String, withValue value: Int) -> String {
+    private func stringFromFormat(_ format: String, withValue value: Int) -> String {
 		return String(value)
 		// TODO: FIX
 		//      let localeFormat = String(
@@ -91,7 +91,7 @@ extension Moment {
 //		return String(format: NSDateTimeAgoLocalizedStrings(localeFormat), value)
     }
 
-    fileprivate func NSDateTimeAgoLocalizedStrings(_ key: String) -> String {
+    private func NSDateTimeAgoLocalizedStrings(_ key: String) -> String {
       // get framework bundle
       guard let bundleIdentifier = Bundle(for: MomentBundle.self).bundleIdentifier  else {
         return ""
