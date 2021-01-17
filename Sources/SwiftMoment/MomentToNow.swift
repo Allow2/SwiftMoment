@@ -47,7 +47,7 @@ extension Moment {
         }
         else if deltaSeconds < dayInSeconds {
             // Hours Ago
-            value = Int(floor(Float((deltaSeconds / hourInSeconds)))
+            value = Int(floor(Float(deltaSeconds / hourInSeconds)))
             return stringFromFormat("%%d %@hours", withValue: value)
             
         }
