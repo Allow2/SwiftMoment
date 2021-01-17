@@ -47,7 +47,7 @@ extension Moment {
         }
         else if deltaSeconds < dayInSeconds {
             // Hours Ago
-            value = inbt(floor(deltaSeconds / hourInSeconds))
+            value = Int(floor(Float((deltaSeconds / hourInSeconds)))
             return stringFromFormat("%%d %@hours", withValue: value)
             
         }
@@ -58,7 +58,7 @@ extension Moment {
         }
         else if deltaSeconds < weekInSeconds {
             // Days Ago
-            value = Int(floor(deltaSeconds / dayInSeconds))
+            value = Int(floor(Float(deltaSeconds / dayInSeconds)))
             return stringFromFormat("%%d %@days", withValue: value)
             
         }
@@ -69,7 +69,7 @@ extension Moment {
         }
         else if deltaSeconds < monthInSeconds {
             // Weeks Ago
-            value = Int(floor(deltaSeconds / weekInSeconds))
+            value = Int(floor(Float(deltaSeconds / weekInSeconds)))
             return self.stringFromFormat("%%d %@weeks", withValue: value)
             
         }
@@ -80,7 +80,7 @@ extension Moment {
         }
         else if deltaSeconds < yearInSeconds {
             // Month Ago
-            value = Int(floor(deltaSeconds / monthInSeconds))
+            value = Int(floor(Float(deltaSeconds / monthInSeconds)))
             return stringFromFormat("%%d %@months", withValue: value)
             
         }
@@ -90,7 +90,7 @@ extension Moment {
         }
         
         // Years Ago
-        value = Int(floor(deltaSeconds / yearInSeconds))
+        value = Int(floor(Float(deltaSeconds / yearInSeconds)))
         return stringFromFormat("%%d", withValue: value)
     }
     
